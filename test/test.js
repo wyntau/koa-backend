@@ -146,4 +146,24 @@ describe('koa-backend', function(){
       }
     ], done);
   });
+
+  it('should dispath private parent resource file', function(done){
+    app = createApp();
+    var req = request(app.listen());
+
+    async.parallel([
+      function(done){
+        req.get('/foo').expect(404, done);
+      }
+      , function(done){
+        req.get('/foo/1').expect(404, done);
+      }
+      , function(done){
+        req.get('/foo/1/bar').expect('/foo/1/bar', done);
+      }
+      , function(done){
+        req.get('/foo/1/bar/2').expect('/foo/1/bar/2', done);
+      }
+    ], done);
+  });
 });
