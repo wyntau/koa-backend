@@ -4,19 +4,15 @@ var request = require('supertest')
 
   , backend = require('..')
 
-  , createApp = function(){
-    var app = koa();
-    app.use(backend(app, __dirname + '/apis'));
-    return app;
-  }
-
   ;
 
 describe('koa-backend', function(){
-  it('should dispath path file', function(done){
-    app = createApp();
-    var req = request(app.listen());
 
+  var app = koa();
+  app.use(backend(app, __dirname + '/apis'));
+  var req = request(app.listen());
+
+  it('should dispath path file', function(done){
     async.parallel([
       function(done){
         req.get('/get').expect('/get', done);
@@ -46,9 +42,6 @@ describe('koa-backend', function(){
   });
 
   it('should dispath dir file', function(done){
-    app = createApp();
-    var req = request(app.listen());
-
     async.parallel([
       function(done){
         req.get('/dir/get').expect('/dir/get', done);
@@ -78,9 +71,6 @@ describe('koa-backend', function(){
   });
 
   it('should dispath pure resource file', function(done){
-    app = createApp();
-    var req = request(app.listen());
-
     async.parallel([
       function(done){
         req.get('/pure').expect('/pure', done);
@@ -92,9 +82,6 @@ describe('koa-backend', function(){
   });
 
   it('should dispath defined name resource file', function(done){
-    app = createApp();
-    var req = request(app.listen());
-
     async.parallel([
       function(done){
         req.get('/names').expect('/names', done);
@@ -106,9 +93,6 @@ describe('koa-backend', function(){
   });
 
   it('should dispath predefine middleware resource file', function(done){
-    app = createApp();
-    var req = request(app.listen());
-
     async.parallel([
       function(done){
         req.get('/pre').expect('pre/pre', done);
@@ -120,9 +104,6 @@ describe('koa-backend', function(){
   });
 
   it('should dispath child resource file', function(done){
-    app = createApp();
-    var req = request(app.listen());
-
     async.parallel([
       function(done){
         req.get('/names/a/path').expect('/names/a/path', done);
@@ -134,9 +115,6 @@ describe('koa-backend', function(){
   });
 
   it('should dispath pure resource file with option', function(done){
-    app = createApp();
-    var req = request(app.listen());
-
     async.parallel([
       function(done){
         req.get('/users').expect('/users', done);
@@ -148,9 +126,6 @@ describe('koa-backend', function(){
   });
 
   it('should dispath private parent resource file', function(done){
-    app = createApp();
-    var req = request(app.listen());
-
     async.parallel([
       function(done){
         req.get('/foo').expect(404, done);
