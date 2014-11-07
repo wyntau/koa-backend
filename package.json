@@ -1,6 +1,6 @@
 {
   "name": "koa-backend",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "backend koa service",
   "main": "index.js",
   "directories": {
@@ -18,19 +18,19 @@
   "author": "Treri",
   "license": "MIT",
   "dependencies": {
-    "debug": "^1.0.4",
+    "debug": "^2.1.0",
     "jistype": "^0.1.0",
     "koa-noop": "^0.1.0",
     "koa-resource-router": "^0.3.3",
-    "koa-router": "^3.3.0",
+    "koa-router": "^3.5.0",
     "lodash": "^2.4.1",
     "readdir": "0.0.13"
   },
   "devDependencies": {
     "async": "^0.9.0",
-    "koa": "^0.10.0",
-    "mocha": "^1.21.4",
-    "supertest": "^0.13.0"
+    "koa": "^0.13.0",
+    "mocha": "^2.0.1",
+    "supertest": "^0.14.0"
   },
   "repository": {
     "type": "git",
